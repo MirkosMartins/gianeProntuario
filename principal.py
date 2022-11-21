@@ -12,3 +12,10 @@ monocitos = st.number_input('Monócitos (x109/L)',step=0.001)
 linfocitos = st.number_input('Linfócitos (x109/L)',step=0.001)
 plaquetas = st.number_input('Plaquetas (x109/L)',step=1000)
 neutrofilos = st.number_input('Neutrófilos (x109/L)',step=0.001)
+if st.button('Calcular NLR/PLR/SII/SIRI/AISI'):
+  nlr = neutrofilos/linfocitos
+  plr = plaquetas/linfocitos
+  sii = plr/neutrofilos
+  siri = nlr/monocitos
+  aisi = (neutrofilos*plaquetas*monocitos)/linfocitos
+  st.write('NLR:'+nlr)
