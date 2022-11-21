@@ -6,7 +6,7 @@ st.header('(c)2022 - Giane Engel / Mirkos Martins')
 
 genero = st.selectbox('Selecione o gênero do paciente:',('masculino','feminino'))
 idade = st.number_input('Digite a idade do paciente:',min_value=1,max_value=150,step=1)
-RDW = st.number_input('RDW (%)',min_value=0)
+RDW = st.number_input('RDW (%)',min_value=0,step=0.1)
 leucocitos = st.number_input('Leucocitos (x109/L)',step=0.1)
 monocitos = st.number_input('Monócitos (x109/L)',step=0.001)
 linfocitos = st.number_input('Linfócitos (x109/L)',step=0.001)
