@@ -18,4 +18,4 @@ if st.button('Calcular NLR/PLR/SII/SIRI/AISI'):
   sii = plr/neutrofilos
   siri = nlr/monocitos
   aisi = (neutrofilos*plaquetas*monocitos)/linfocitos
-  st.write('NLR:'+nlr)
+  st.write('NLR:'+str(nlr))
