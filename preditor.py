@@ -43,6 +43,11 @@ sii = plr/int(neu)
 siri = nlr/int(mon)
 #aisi = st.number_input('AISI.1')
 aisi = (int(neu)*int(pla)*int(mon))/int(lin)
+st.write('NLR:',nlr)
+st.write('PLR:',plr)
+st.write('SII:',sii)
+st.write('SIRI:',siri)
+st.write('AISI:',aisi)
 pac = [rdw,leu,neu,pcr,sat,dm2,nlr,plr,sii,siri,aisi]
 pred = modelo.predict([pac])
 
