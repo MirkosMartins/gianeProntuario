@@ -11,29 +11,29 @@ import joblib
 import streamlit as st
 import pandas as pd
 
-gravidade = ['Leve','Moderada','Grave']
+gravidade = ['Low','Medium','High']
 
 nome = 'giane.sav'
 modelo = joblib.load(nome)
-st.title('Preditor de gravidade COVID-19')
+st.title('COVID-19 severity predictor')
 rdw = st.number_input('RDW (%)',min_value=(10),max_value=(9000))
-leu = st.number_input('Leucócitos (x109/L)',min_value=(0),max_value=(270))
-lin = st.number_input('Linfócitos (x109/L)',min_value=(1))#
-mon = st.number_input('Monócitos (x109/L)',min_value=(1))#
-neu = st.number_input('Neutrófilos (x109/L)',min_value=(1),max_value=(35))
+leu = st.number_input('Leukocytes (x109/L)',min_value=(0),max_value=(270))
+lin = st.number_input('Lymphocytes (x109/L)',min_value=(1))#
+mon = st.number_input('Monocytes (x109/L)',min_value=(1))#
+neu = st.number_input('Neutrophils (x109/L)',min_value=(1),max_value=(35))
 pcr = st.number_input('PCR (mg/dL)')
-pla = st.number_input('Plaquetas (x109/L)')#
-satO = st.selectbox('Saturação Oximetria',('<95','>=95'))
+pla = st.number_input('Platelets (x109/L)')#
+satO = st.selectbox('Saturation Oximetry',('<95','>=95'))
 if satO == '<95':
     sat=0
 else:
     sat=1
-dbm2 = st.selectbox('Diabetes Mellitus tipo 2',('Nao','Sim'))
-if dbm2=='Nao':
+dbm2 = st.selectbox('Type 2 diabetes mellitus',('No','Yes'))
+if dbm2=='No':
     dm2 = 0
 else:
     dm2 = 1
-none = st.selectbox('Hipertensao (HAS):',('Nao','Sim'))
+none = st.selectbox('Hypertension (HAS):',('No','Yes'))
 #nlr = st.number_input('NLR.1')
 nlr = int(neu)/int(lin)
 #plr = st.number_input('PLR.1')
@@ -55,14 +55,14 @@ pred = modelo.predict([pac])
 
 
 
-if st.button('Analisar'):
+if st.button('Analyse'):
     indice = int(pred)
-    st.write('Gravidade pred:',gravidade[int(pred)])
+    st.write('Severity pred:',gravidade[int(pred)])
     if indice == 0:
-        st.image('low-risk.png')
+        st.image('low-risk.png',width=150)
     else:
         if indice==1:
-            st.image('moderate-risk.png')
+            st.image('moderate-risk.png',width=150)
         else:
-            st.image('high-risk.png')
+            st.image('high-risk.png',width=150)
     
