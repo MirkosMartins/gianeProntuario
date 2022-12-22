@@ -33,6 +33,7 @@ if dbm2=='Nao':
     dm2 = 0
 else:
     dm2 = 1
+none = st.selectbox('Hipertensao (HAS):',('Nao','Sim'))
 #nlr = st.number_input('NLR.1')
 nlr = int(neu)/int(lin)
 #plr = st.number_input('PLR.1')
@@ -43,11 +44,11 @@ sii = plr/int(neu)
 siri = nlr/int(mon)
 #aisi = st.number_input('AISI.1')
 aisi = (int(neu)*int(pla)*int(mon))/int(lin)
-st.write('NLR:',nlr)
-st.write('PLR:',plr)
-st.write('SII:',sii)
-st.write('SIRI:',siri)
-st.write('AISI:',aisi)
+
+dt = {'NLR':[nlr],'PLR':[nlr],'SII':[sii],'SIRI':[siri],'AISI':[aisi]}
+formulas = pd.DataFrame(data=dt)
+st.dataframe(formulas)
+
 pac = [rdw,leu,neu,pcr,sat,dm2,nlr,plr,sii,siri,aisi]
 pred = modelo.predict([pac])
 
